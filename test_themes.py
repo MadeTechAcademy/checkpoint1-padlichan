@@ -1,3 +1,8 @@
-from themes import x2
-def testIt():
-    assert len(x2)>10
+from themes import print_duties
+
+def test_print_duties_prints_something(capsys):
+    print_duties()
+    captured = capsys.readouterr()
+    output = captured.out
+    assert output != ""
+

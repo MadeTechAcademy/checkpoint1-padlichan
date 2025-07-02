@@ -1,4 +1,4 @@
-x2 = [
+_duties_list = [
     "Duty 1 Script and code in at least one general purpose language and at least one domain-specific language to orchestrate infrastructure, follow test driven development and ensure appropriate test coverage.",
     "Duty 2 Initiate and facilitate knowledge sharing and technical collaboration with teams and individuals, with a focus on supporting development of team members.",
     "Duty 3 Engage in productive pair/mob programming to underpin the practice of peer review.",
@@ -12,10 +12,11 @@ x2 = [
     "Duty 12 Look to automate any manual tasks that are repeated, often using APIs.",
     "Duty 12 Look to automate any manual tasks that are repeated, often using APIs.",
     "Duty 13 Accept ownership of changes; embody the DevOps culture of 'you build it, you run it', with a relentless focus on the user experience."
-]#list of duties
-def go():
-    for y in x2:
-        print("{0}\n".format(y))
+]
+def print_duties():
+    #for duty in duties_list:
+    #    print("{0}\n".format(duty))
+    print('something')
 
 if __name__=="__main__":
     x = input("""
@@ -24,4 +25,4 @@ if __name__=="__main__":
     Enter your choice:
     """)
     if x == '1':
-        go()
+        print_duties()
