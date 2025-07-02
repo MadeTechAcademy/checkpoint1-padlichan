@@ -22,6 +22,8 @@ def save_to_html(path):
         f.write("<html>\n")
         f.write("<body>\n")
         f.write("<ul>\n")
+        for duty in _duties_list:
+            f.write(f"\t<li>{duty}</li>\n\t<br>\n")
         f.write("</ul>\n")
         f.write("</body>\n")
         f.write("</html>\n")

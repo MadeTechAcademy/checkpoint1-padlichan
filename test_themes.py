@@ -44,4 +44,7 @@ def test_save_to_html_contains_body_tag(html_content):
 
 def test_save_to_html_contains_list_tag(html_content):
     assert "<ul>" in html_content and "</ul>" in html_content
-    
+
+def test_save_to_html_contains_list_item_tag_13_times(html_content):
+    count = html_content.count("<li>")
+    assert count == 13
