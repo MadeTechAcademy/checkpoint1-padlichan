@@ -14,12 +14,12 @@ _duties_list = [
     "Duty 13 Accept ownership of changes; embody the DevOps culture of 'you build it, you run it', with a relentless focus on the user experience."
 ]
 
-_themes = ["Bootcamp",
-           "Automate!",
-           "Houston, Prepare to Launch",
-           "Going Deeper",
-           "Assemble!",
-           "Call Security"]
+_themes = {"Bootcamp": [1,2,3,4,13],
+           "Automate!": [5,7,10],
+           "Houston, Prepare to Launch": [6,7,10,12],
+           "Going Deeper": [11],
+           "Assemble!": [8],
+           "Call Security": [9]}
 
 def print_duties():
     for duty in _duties_list:
@@ -39,7 +39,7 @@ def duties_to_html(path):
 def themes_to_html(path):
         with open(f"{path}/themes.html", 'w') as f:
             for theme in _themes:
-                f.write(f"{theme}\n")
+                f.write(f"{theme}: {', '.join(str(x) for x in _themes[theme])}\n")
 
 if __name__=="__main__":
     x = input("""

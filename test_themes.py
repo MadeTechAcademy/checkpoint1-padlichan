@@ -68,13 +68,13 @@ def test_themes_to_html_creates_file(themes_html_file):
 def test_themes_to_html_creates_not_empty_file(themes_html_content):
     assert themes_html_content.strip() != ""
 
-def test_themes_to_html_contains_all_themes(themes_html_content):
-    assert "Bootcamp" in themes_html_content 
-    assert "Automate!" in themes_html_content 
-    assert "Houston, Prepare to Launch" in themes_html_content 
-    assert "Going Deeper" in themes_html_content 
-    assert "Assemble!" in themes_html_content 
-    assert "Call Security" in themes_html_content 
+def test_themes_to_html_contains_all_themes_with_duties(themes_html_content):
+    assert "Bootcamp: 1, 2, 3, 4, 13" in themes_html_content 
+    assert "Automate!: 5, 7, 10" in themes_html_content 
+    assert "Houston, Prepare to Launch: 6, 7, 10, 12" in themes_html_content 
+    assert "Going Deeper: 11" in themes_html_content 
+    assert "Assemble!: 8" in themes_html_content 
+    assert "Call Security: 9" in themes_html_content 
 
 
 
