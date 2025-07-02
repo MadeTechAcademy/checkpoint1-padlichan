@@ -19,7 +19,12 @@ def print_duties():
 
 def save_to_html(path):
     with open(f"{path}/duties.html", 'w') as f:
-        f.write("<html></html>")
+        f.write("<html>\n")
+        f.write("<body>\n")
+        f.write("<ul>\n")
+        f.write("</ul>\n")
+        f.write("</body>\n")
+        f.write("</html>\n")
 
 if __name__=="__main__":
     x = input("""
@@ -31,4 +36,4 @@ if __name__=="__main__":
     if x == '1':
         print_duties()
     elif x == '2':
-        save_to_html()
+        save_to_html("./")

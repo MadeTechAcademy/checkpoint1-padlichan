@@ -25,13 +25,23 @@ def html_file(tmp_path):
     save_to_html(tmp_path)
     return output_file
 
+@pytest.fixture
+def html_content(html_file):
+    content = open(html_file).read()
+    return content
+
 def test_save_to_html_creates_file(html_file):
     assert html_file.exists()
 
-def test_save_to_html_creates_not_empty_file(html_file):
-    content = open(html_file).read()
-    assert content.strip() != ""
+def test_save_to_html_creates_not_empty_file(html_content):
+    assert html_content.strip() != ""
 
-def test_save_to_html_contains_html_tag(html_file):
-    content = open(html_file).read()
-    assert "<html>" in content and "</html" in content
+def test_save_to_html_contains_html_tag(html_content):
+    assert "<html>" in html_content and "</html>" in html_content
+
+def test_save_to_html_contains_body_tag(html_content):
+    assert "<body>" in html_content and "</body>" in html_content
+
+def test_save_to_html_contains_list_tag(html_content):
+    assert "<ul>" in html_content and "</ul>" in html_content
+    
