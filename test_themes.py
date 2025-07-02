@@ -1,5 +1,6 @@
 from themes import print_duties
 from themes import save_to_html
+import pytest
 
 def test_print_duties_prints_something(capsys):
     print_duties()
@@ -18,19 +19,19 @@ def test_print_duties_prints_13_lines(capsys):
 
     assert len(non_empty_lines) == number_of_duties
 
-def test_save_to_html_creates_file(tmp_path):
+@pytest.fixture
+def html_file(tmp_path):
     output_file = tmp_path/"duties.html"
     save_to_html(tmp_path)
-    assert output_file.exists()
+    return output_file
 
-def test_save_to_html_creates_not_empty_file(tmp_path):
-    output_file = tmp_path/"duties.html"
-    save_to_html(tmp_path)
-    content = open(output_file).read()
+def test_save_to_html_creates_file(html_file):
+    assert html_file.exists()
+
+def test_save_to_html_creates_not_empty_file(html_file):
+    content = open(html_file).read()
     assert content.strip() != ""
 
-def test_save_to_html_contains_html_tag(tmp_path):
-    output_file = tmp_path/"duties.html"
-    save_to_html(tmp_path)
-    content = open(output_file).read()
+def test_save_to_html_contains_html_tag(html_file):
+    content = open(html_file).read()
     assert "<html>" in content and "</html" in content
