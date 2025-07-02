@@ -20,5 +20,12 @@ def test_print_duties_prints_13_lines(capsys):
 
 def test_save_to_html_creates_file(tmp_path):
     output_file = tmp_path/"duties.html"
-    save_to_html(output_file)
+    save_to_html(tmp_path)
     assert output_file.exists()
+
+def test_save_to_html_creates_not_empty_file(tmp_path):
+    output_file = tmp_path/"duties.html"
+    save_to_html(tmp_path)
+
+    content = open(output_file).read()
+    assert content.strip() != ""

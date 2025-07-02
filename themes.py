@@ -18,8 +18,8 @@ def print_duties():
        print("{0}".format(duty))
 
 def save_to_html(path):
-    with open(path, 'w') as f:
-        f.write("")
+    with open(f"{path}/duties.html", 'w') as f:
+        f.write("something")
 
 if __name__=="__main__":
     x = input("""
