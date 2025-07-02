@@ -19,7 +19,7 @@ def print_duties():
 
 def save_to_html(path):
     with open(f"{path}/duties.html", 'w') as f:
-        f.write("something")
+        f.write("<html></html>")
 
 if __name__=="__main__":
     x = input("""

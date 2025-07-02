@@ -26,6 +26,11 @@ def test_save_to_html_creates_file(tmp_path):
 def test_save_to_html_creates_not_empty_file(tmp_path):
     output_file = tmp_path/"duties.html"
     save_to_html(tmp_path)
-
     content = open(output_file).read()
     assert content.strip() != ""
+
+def test_save_to_html_contains_html_tag(tmp_path):
+    output_file = tmp_path/"duties.html"
+    save_to_html(tmp_path)
+    content = open(output_file).read()
+    assert "<html>" in content and "</html" in content
