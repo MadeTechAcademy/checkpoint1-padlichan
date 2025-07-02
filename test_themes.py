@@ -1,5 +1,7 @@
 from themes import print_duties
-from themes import save_to_html
+from themes import duties_to_html
+from themes import themes_to_html
+
 import pytest
 
 def test_print_duties_prints_something(capsys):
@@ -20,31 +22,60 @@ def test_print_duties_prints_13_lines(capsys):
     assert len(non_empty_lines) == number_of_duties
 
 @pytest.fixture
-def html_file(tmp_path):
+def duties_html_file(tmp_path):
     output_file = tmp_path/"duties.html"
-    save_to_html(tmp_path)
+    duties_to_html(tmp_path)
     return output_file
 
 @pytest.fixture
-def html_content(html_file):
-    content = open(html_file).read()
+def duties_html_content(duties_html_file):
+    content = open(duties_html_file).read()
     return content
 
-def test_save_to_html_creates_file(html_file):
-    assert html_file.exists()
+@pytest.fixture
+def themes_html_file(tmp_path):
+    output_file = tmp_path/"themes.html"
+    themes_to_html(tmp_path)
+    return output_file
 
-def test_save_to_html_creates_not_empty_file(html_content):
-    assert html_content.strip() != ""
+@pytest.fixture
+def themes_html_content(themes_html_file):
+    content = open(themes_html_file).read()
+    return content
 
-def test_save_to_html_contains_html_tag(html_content):
-    assert "<html>" in html_content and "</html>" in html_content
+def test_duties_to_html_creates_file(duties_html_file):
+    assert duties_html_file.exists()
 
-def test_save_to_html_contains_body_tag(html_content):
-    assert "<body>" in html_content and "</body>" in html_content
+def test_duties_to_html_creates_not_empty_file(duties_html_content):
+    assert duties_html_content.strip() != ""
 
-def test_save_to_html_contains_list_tag(html_content):
-    assert "<ul>" in html_content and "</ul>" in html_content
+def test_duties_to_html_contains_html_tag(duties_html_content):
+    assert "<html>" in duties_html_content and "</html>" in duties_html_content
 
-def test_save_to_html_contains_list_item_tag_13_times(html_content):
-    count = html_content.count("<li>")
+def test_duties_to_html_contains_body_tag(duties_html_content):
+    assert "<body>" in duties_html_content and "</body>" in duties_html_content
+
+def test_duties_to_html_contains_list_tag(duties_html_content):
+    assert "<ul>" in duties_html_content and "</ul>" in duties_html_content
+
+def test_duties_to_html_contains_list_item_tag_13_times(duties_html_content):
+    count = duties_html_content.count("<li>")
     assert count == 13
+    
+def test_themes_to_html_creates_file(themes_html_file):
+    assert themes_html_file.exists()
+
+def test_themes_to_html_creates_not_empty_file(themes_html_content):
+    assert themes_html_content.strip() != ""
+
+def test_themes_to_html_contains_all_themes(themes_html_content):
+    assert "Bootcamp" in themes_html_content 
+    assert "Automate!" in themes_html_content 
+    assert "Houston, Prepare to Launch" in themes_html_content 
+    assert "Going Deeper" in themes_html_content 
+    assert "Assemble!" in themes_html_content 
+    assert "Call Security" in themes_html_content 
+
+
+
+    

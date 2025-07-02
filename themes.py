@@ -13,11 +13,19 @@ _duties_list = [
     "Duty 12 Look to automate any manual tasks that are repeated, often using APIs.",
     "Duty 13 Accept ownership of changes; embody the DevOps culture of 'you build it, you run it', with a relentless focus on the user experience."
 ]
+
+_themes = ["Bootcamp",
+           "Automate!",
+           "Houston, Prepare to Launch",
+           "Going Deeper",
+           "Assemble!",
+           "Call Security"]
+
 def print_duties():
     for duty in _duties_list:
        print("{0}".format(duty))
 
-def save_to_html(path):
+def duties_to_html(path):
     with open(f"{path}/duties.html", 'w') as f:
         f.write("<html>\n")
         f.write("<body>\n")
@@ -27,6 +35,11 @@ def save_to_html(path):
         f.write("</ul>\n")
         f.write("</body>\n")
         f.write("</html>\n")
+
+def themes_to_html(path):
+        with open(f"{path}/themes.html", 'w') as f:
+            for theme in _themes:
+                f.write(f"{theme}\n")
 
 if __name__=="__main__":
     x = input("""
@@ -38,4 +51,4 @@ if __name__=="__main__":
     if x == '1':
         print_duties()
     elif x == '2':
-        save_to_html("./")
+        duties_to_html("./")
