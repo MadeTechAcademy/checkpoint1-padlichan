@@ -36,19 +36,28 @@ def duties_to_html(path):
         f.write("</body>\n")
         f.write("</html>\n")
 
-def themes_to_html(path):
-        with open(f"{path}/themes.html", 'w') as f:
-            for theme in _themes:
-                f.write(f"{theme}: {', '.join(str(x) for x in _themes[theme])}\n")
+def theme_to_html(path, theme):
+    with open(f"{path}/theme.html", 'w') as f:
+        f.write("<html>\n")
+        f.write("<body>\n")
+        f.write(f"<h1>{theme}</h1>\n")
+        f.write(f"<p>Duties: {', '.join(str(x) for x in _themes[theme])}</p>\n")
+        f.write("</body>\n")
+        f.write("</html>\n")
 
 if __name__=="__main__":
     x = input("""
     Welcome to apprentice themes!\n
     Press (1) to list all the duties\n
     Press (2) to save all the duties to html\n
+    Press (3) to save theme Bootcamp and associated duties to html\n
     Enter your choice:
     """)
     if x == '1':
         print_duties()
     elif x == '2':
         duties_to_html("./")
+    elif x == '3':
+        theme_to_html("./", "Bootcamp")
+    elif x == '4':
+        theme_to_html("./", "Automate!")
