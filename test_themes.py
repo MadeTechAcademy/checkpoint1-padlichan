@@ -52,8 +52,12 @@ class TestDutiesToHTML:
             assert f"Duty {i}" in duties_html_content 
 
 class TestThemesToHTML:
-    def helper_test(self):
-        return "I help"
+    themes = ["Bootcamp",
+              "Automate!",
+              "Houston, Prepare to Launch",
+              "Going Deeper",
+              "Assemble!",
+              "Call Security"]
 
     def helper_create_theme_html(self, path, theme):
         output_file = path/"theme.html"
@@ -80,10 +84,11 @@ class TestThemesToHTML:
         assert "<h1>" in content and "</h1>" in content
         assert "<ul>" in content and "</ul>" in content
         assert "<li>" in content and "</li>" in content
-
-    def test_theme_to_html_Bootcamp_contains_theme(self, tmp_path):
-        content = self.helper_create_theme_content(tmp_path, "Bootcamp")
-        assert "Bootcamp" in content  
+    
+    @pytest.mark.parametrize("theme", themes)
+    def test_theme_to_html_contains_theme(self, tmp_path, theme):
+        content = self.helper_create_theme_content(tmp_path, theme)
+        assert theme in content  
 
     def test_theme_to_html_Boocamp_contains_duties(self, tmp_path):
         content = self.helper_create_theme_content(tmp_path, "Bootcamp")
@@ -93,10 +98,6 @@ class TestThemesToHTML:
         assert "Duty 3" in content
         assert "Duty 4" in content
         assert "Duty 13" in content
-
-    def test_theme_to_html_Going_Deeper_contains_theme(self, tmp_path):
-        content = self.helper_create_theme_content(tmp_path, "Going Deeper")
-        assert "Going Deeper" in content 
 
     def test_theme_to_html_Going_Deeper_contains_duties(self, tmp_path):
         content = self.helper_create_theme_content(tmp_path,"Going Deeper")
