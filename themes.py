@@ -57,6 +57,10 @@ if __name__=="__main__":
     Press (2) to save all the duties to html\n
     Press (3) to save theme Bootcamp and associated duties to html\n
     Press (4) to save theme Automate! and associated duties to html\n
+    Press (5) to save theme Houston, Prepare to Launch and associated duties to html\n
+    Press (6) to save theme Going Deeper and associated duties to html\n
+    Press (7) to save theme Assemble! and associated duties to html\n
+    Press (8) to save theme Call Security and associated duties to html\n
     Enter your choice:
     """)
     if x == '1':
@@ -67,3 +71,11 @@ if __name__=="__main__":
         theme_to_html("./", "Bootcamp")
     elif x == '4':
         theme_to_html("./", "Automate!")
+    elif x == '5':
+        theme_to_html("./", "Houston, Prepare to Launch")
+    elif x == '6':
+        theme_to_html("./", "Going Deeper")
+    elif x == '7':
+        theme_to_html("./", "Assemble!")
+    elif x == '8':
+        theme_to_html("./", "Call Security")
