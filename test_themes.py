@@ -49,18 +49,19 @@ def test_duties_to_html_creates_file(duties_html_file):
 def test_duties_to_html_creates_not_empty_file(duties_html_content):
     assert duties_html_content.strip() != ""
 
-def test_duties_to_html_contains_html_tag(duties_html_content):
+def test_duties_to_html_contains_html_tags(duties_html_content):
     assert "<html>" in duties_html_content and "</html>" in duties_html_content
-
-def test_duties_to_html_contains_body_tag(duties_html_content):
     assert "<body>" in duties_html_content and "</body>" in duties_html_content
-
-def test_duties_to_html_contains_list_tag(duties_html_content):
     assert "<ul>" in duties_html_content and "</ul>" in duties_html_content
 
-def test_duties_to_html_contains_list_item_tag_13_times(duties_html_content):
+def test_duties_to_html_contains_13_list_item_tags(duties_html_content):
+    number_of_duties = 13
     count = duties_html_content.count("<li>")
-    assert count == 13
+    assert count == number_of_duties
+
+def test_duties_to_html_contains_all_duties(duties_html_content):
+    for i in range(1,14):
+        assert f"Duty {i}" in duties_html_content 
     
 def test_themes_to_html_creates_file(themes_html_file):
     assert themes_html_file.exists()
