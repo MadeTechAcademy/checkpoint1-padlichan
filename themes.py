@@ -41,7 +41,12 @@ def theme_to_html(path, theme):
         f.write("<html>\n")
         f.write("<body>\n")
         f.write(f"<h1>{theme}</h1>\n")
-        f.write(f"<p>Duties: {', '.join(str(x) for x in _themes[theme])}</p>\n")
+        f.write(f"<h2>Duties: </h2>\n")
+#        f.write(f"<p>Duties: {', '.join(str(x) for x in _themes[theme])}</p>\n")
+        f.write("<ul>\n")
+        for index in _themes[theme]:
+            f.write(f"<li>{_duties_list[index-1]}</li>\n")
+        f.write("</ul>\n")
         f.write("</body>\n")
         f.write("</html>\n")
 
@@ -51,6 +56,7 @@ if __name__=="__main__":
     Press (1) to list all the duties\n
     Press (2) to save all the duties to html\n
     Press (3) to save theme Bootcamp and associated duties to html\n
+    Press (4) to save theme Automate! and associated duties to html\n
     Enter your choice:
     """)
     if x == '1':

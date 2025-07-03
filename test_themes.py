@@ -77,7 +77,8 @@ def test_themes_to_html_contains_html_tags(tmp_path):
     assert "<html>" in content and "</html>" in content
     assert "<body>" in content and "</body>" in content
     assert "<h1>" in content and "</h1>" in content
-    assert "<p>" in content and "</p>" in content
+    assert "<ul>" in content and "</ul>" in content
+    assert "<li>" in content and "</li>" in content
 
 def test_theme_to_html_Bootcamp_contains_theme(tmp_path):
     content = helper_create_theme_content(tmp_path, "Bootcamp")
@@ -85,7 +86,12 @@ def test_theme_to_html_Bootcamp_contains_theme(tmp_path):
 
 def test_theme_to_html_Boocamp_contains_duties(tmp_path):
     content = helper_create_theme_content(tmp_path, "Bootcamp")
-    assert "Duties: 1, 2, 3, 4, 13" in content
+    assert "Duties:" in content
+    assert "Duty 1" in content
+    assert "Duty 2" in content
+    assert "Duty 3" in content
+    assert "Duty 4" in content
+    assert "Duty 13" in content
 
 def test_theme_to_html_Going_Deeper_contains_theme(tmp_path):
     content = helper_create_theme_content(tmp_path, "Going Deeper")
@@ -93,4 +99,5 @@ def test_theme_to_html_Going_Deeper_contains_theme(tmp_path):
 
 def test_theme_to_html_Going_Deeper_contains_duties(tmp_path):
     content = helper_create_theme_content(tmp_path,"Going Deeper")
-    assert "Duties: 11" in content
+    assert "Duties:" in content
+    assert "Duty 11" in content
