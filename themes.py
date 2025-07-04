@@ -55,7 +55,7 @@ class ApprenticeshipInfo:
 
     @staticmethod
     def menu():
-        input = input("""
+        user_input = input("""
         Welcome to apprentice themes!\n
         Press (1) to list all the duties\n
         Press (2) to save all the duties to html\n
@@ -67,21 +67,21 @@ class ApprenticeshipInfo:
         Press (8) to save theme Call Security and associated duties to html\n
         Enter your choice:
         """)
-        if input == '1':
+        if user_input == '1':
             ApprenticeshipInfo.print_duties()
-        elif input == '2':
+        elif user_input == '2':
             ApprenticeshipInfo.duties_to_html("./")
-        elif input == '3':
+        elif user_input == '3':
             ApprenticeshipInfo.theme_to_html("./", "Bootcamp")
-        elif input == '4':
+        elif user_input == '4':
             ApprenticeshipInfo.theme_to_html("./", "Automate!")
-        elif input == '5':
+        elif user_input == '5':
             ApprenticeshipInfo.theme_to_html("./", "Houston, Prepare to Launch")
-        elif input == '6':
+        elif user_input == '6':
             ApprenticeshipInfo.theme_to_html("./", "Going Deeper")
-        elif input == '7':
+        elif user_input == '7':
             ApprenticeshipInfo.theme_to_html("./", "Assemble!")
-        elif input == '8':
+        elif user_input == '8':
             ApprenticeshipInfo.theme_to_html("./", "Call Security")
 
     def open_html(path):
