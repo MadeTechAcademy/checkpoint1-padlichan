@@ -41,6 +41,7 @@ class ApprenticeshipInfo:
             f.write("</html>\n")
 
     def theme_to_html(path, theme):
+        path = Path(path)
         with open(f"{path}/theme.html", 'w') as f:
             f.write("<html>\n")
             f.write("<body>\n")
@@ -52,6 +53,7 @@ class ApprenticeshipInfo:
             f.write("</ul>\n")
             f.write("</body>\n")
             f.write("</html>\n")
+            ApprenticeshipInfo.open_html(path/"theme.html")
 
     @staticmethod
     def menu():

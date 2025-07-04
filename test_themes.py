@@ -1,5 +1,6 @@
 from themes import ApprenticeshipInfo
 import pytest
+from unittest.mock import patch
 
 
 class TestPrintDuties:
@@ -62,7 +63,8 @@ class TestThemesToHTML:
 
     def helper_create_theme_html(self, path, theme):
         output_file = path/"theme.html"
-        ApprenticeshipInfo.theme_to_html(path, theme)
+        with patch("themes.ApprenticeshipInfo.open_html"):
+            ApprenticeshipInfo.theme_to_html(path, theme)
         return output_file
 
     def helper_create_theme_content(self, path, theme):
