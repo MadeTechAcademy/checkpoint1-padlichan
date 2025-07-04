@@ -107,10 +107,24 @@ class TestThemesToHTML:
         assert "Duties:" in content
         assert "Duty 11" in content
 
-    def test_open_HTML_calls_webbrowser_open_once(self, mocker, tmp_path):
+    def test_open_HTML_calls_webbrowser_open_once_if_y(self, mocker, tmp_path):
         fake_hmtl = tmp_path/"fake.html"
         mock_open = mocker.patch("webbrowser.open")
+        mock_input = mocker.patch("builtins.input", return_value ="y")
+
         ApprenticeshipInfo.open_html(fake_hmtl)
 
+        mock_input.assert_called_once()
         fake_uri = fake_hmtl.resolve().as_uri()
         mock_open.assert_called_once_with(fake_uri)
+
+    def test_open_HTML_does_not_call_webbrowser_open_if_n(self, mocker, tmp_path):
+        fake_hmtl = tmp_path/"fake.html"
+        mock_open = mocker.patch("webbrowser.open")
+        mock_input = mocker.patch("builtins.input", return_value ="n")
+
+        ApprenticeshipInfo.open_html(fake_hmtl)
+
+        mock_input.assert_called_once()
+        fake_uri = fake_hmtl.resolve().as_uri()
+        mock_open.assert_not_called()

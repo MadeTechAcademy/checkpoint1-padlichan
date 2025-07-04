@@ -87,8 +87,12 @@ class ApprenticeshipInfo:
             ApprenticeshipInfo.theme_to_html("./", "Call Security")
 
     def open_html(path):
-        uri = path.resolve().as_uri()
-        webbrowser.open(uri)
+        user_input = input("""
+        Would you like to open the html file? (y/n)
+        """)
+        if user_input == 'y':
+            uri = path.resolve().as_uri()
+            webbrowser.open(uri)
 
 if __name__=="__main__":
     ApprenticeshipInfo.menu()
