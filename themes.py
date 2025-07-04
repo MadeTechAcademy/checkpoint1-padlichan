@@ -1,3 +1,6 @@
+import webbrowser
+from pathlib import Path
+
 class ApprenticeshipInfo:
     _duties_list = [
         "Duty 1 Script and code in at least one general purpose language and at least one domain-specific language to orchestrate infrastructure, follow test driven development and ensure appropriate test coverage.",
@@ -38,6 +41,7 @@ class ApprenticeshipInfo:
             f.write("</html>\n")
 
     def theme_to_html(path, theme):
+        path = Path(path)
         with open(f"{path}/theme.html", 'w') as f:
             f.write("<html>\n")
             f.write("<body>\n")
@@ -49,10 +53,11 @@ class ApprenticeshipInfo:
             f.write("</ul>\n")
             f.write("</body>\n")
             f.write("</html>\n")
+            ApprenticeshipInfo.open_html(path/"theme.html")
 
     @staticmethod
     def menu():
-        input = input("""
+        user_input = input("""
         Welcome to apprentice themes!\n
         Press (1) to list all the duties\n
         Press (2) to save all the duties to html\n
@@ -64,22 +69,30 @@ class ApprenticeshipInfo:
         Press (8) to save theme Call Security and associated duties to html\n
         Enter your choice:
         """)
-        if input == '1':
+        if user_input == '1':
             ApprenticeshipInfo.print_duties()
-        elif input == '2':
+        elif user_input == '2':
             ApprenticeshipInfo.duties_to_html("./")
-        elif input == '3':
+        elif user_input == '3':
             ApprenticeshipInfo.theme_to_html("./", "Bootcamp")
-        elif input == '4':
+        elif user_input == '4':
             ApprenticeshipInfo.theme_to_html("./", "Automate!")
-        elif input == '5':
+        elif user_input == '5':
             ApprenticeshipInfo.theme_to_html("./", "Houston, Prepare to Launch")
-        elif input == '6':
+        elif user_input == '6':
             ApprenticeshipInfo.theme_to_html("./", "Going Deeper")
-        elif input == '7':
+        elif user_input == '7':
             ApprenticeshipInfo.theme_to_html("./", "Assemble!")
-        elif input == '8':
+        elif user_input == '8':
             ApprenticeshipInfo.theme_to_html("./", "Call Security")
+
+    def open_html(path):
+        user_input = input("""
+        Would you like to open the html file? (y/n)
+        """)
+        if user_input == 'y':
+            uri = path.resolve().as_uri()
+            webbrowser.open(uri)
 
 if __name__=="__main__":
     ApprenticeshipInfo.menu()
