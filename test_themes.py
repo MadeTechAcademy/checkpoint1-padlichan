@@ -1,6 +1,7 @@
 from themes import ApprenticeshipInfo
 import pytest
 
+
 class TestPrintDuties:
     def test_print_duties_prints_something(self, capsys):
         ApprenticeshipInfo.print_duties()
@@ -103,3 +104,11 @@ class TestThemesToHTML:
         content = self.helper_create_theme_content(tmp_path,"Going Deeper")
         assert "Duties:" in content
         assert "Duty 11" in content
+
+    def test_open_HTML_calls_webbrowser_open_once(self, mocker, tmp_path):
+        fake_hmtl = tmp_path/"fake.html"
+        mock_open = mocker.patch("webbrowser.open")
+        ApprenticeshipInfo.open_html(fake_hmtl)
+
+        fake_uri = fake_hmtl.resolve().as_uri()
+        mock_open.assert_called_once_with(fake_uri)

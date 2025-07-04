@@ -1,3 +1,6 @@
+import webbrowser
+from pathlib import Path
+
 class ApprenticeshipInfo:
     _duties_list = [
         "Duty 1 Script and code in at least one general purpose language and at least one domain-specific language to orchestrate infrastructure, follow test driven development and ensure appropriate test coverage.",
@@ -80,6 +83,10 @@ class ApprenticeshipInfo:
             ApprenticeshipInfo.theme_to_html("./", "Assemble!")
         elif input == '8':
             ApprenticeshipInfo.theme_to_html("./", "Call Security")
+
+    def open_html(path):
+        uri = path.resolve().as_uri()
+        webbrowser.open(uri)
 
 if __name__=="__main__":
     ApprenticeshipInfo.menu()
